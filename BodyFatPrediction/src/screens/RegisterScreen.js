@@ -46,8 +46,9 @@ const RegisterScreen = ({navigation}) => {
                     onChangeText={(text)=>setPassword(text)}
                 />
                 
-                <View><Button title="Login" style={styles.button}/></View>
-
+                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Home')}>
+                   <Text>Register</Text>
+                </TouchableOpacity>
                 <View style={{flexDirection:'row',marginTop:10,alignSelf:'center'}}>
                     <Text style={styles.text}>Have an account already? </Text>
                     <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
@@ -64,27 +65,52 @@ const styles = StyleSheet.create({
          flex:1,
          alignItems:'center',
          justifyContent:'center',
+         backgroundColor:"#bdc3c7"
     },
     wrapper:{
-        width:'80%',
+        width:'100%',
         // borderWidth:1,
         borderColor:'#bbb',
         borderRadius:5,
         paddingHorizontal:14,
-        paddingTop:'10%'
+        paddingTop:'10%',
+        height:"100%",
+        backgroundColor:"#ecf0f1",
+        justifyContent:'center',
+        alignContent:'center',
+        alignItems:'center',
+        borderBottomEndRadius:300,
+        borderTopStartRadius:300,
+        borderColor:'#9b59b6',
+        borderWidth:1
+    },
+    titleTextStyle:{
+        color:"#9b59b6",
+        fontSize:30,
+        letterSpacing:15,
+        marginBottom:20,
+        fontWeight:'900',
+        fontFamily:"sans-serif-medium"
     },
     input:{
         color:'black',
         marginBottom:20,
         borderWidth:1,
         padding:10,
-        borderColor:'#bbb',
+        width:'80%',
+        borderRadius:30,
+        color:'#9b59b6',
+        borderColor:'#9b59b6',
     },
-    button:{
-        marginTop:50,
-        width:300,
+    buttonContainer:{
+        marginTop:30,
+        width:200,
+        height:30,
         alignItems:'center',
         justifyContent:'center',
+        backgroundColor:'#9b59b6',
+        color:'#ecf0f1',
+        borderRadius:20,
     },
     link:{
         color:'blue'
