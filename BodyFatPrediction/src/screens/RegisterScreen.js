@@ -16,6 +16,7 @@ const RegisterScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.wrapper}>
+                <Text style={styles.titleTextStyle}>REGISTER</Text>
                 <TextInput 
                     placeholder='Enter Full Name' 
                     style={styles.input}
@@ -90,7 +91,8 @@ const styles = StyleSheet.create({
         letterSpacing:15,
         marginBottom:20,
         fontWeight:'900',
-        fontFamily:"sans-serif-medium"
+        fontFamily:"sans-serif-medium",
+        letterSpacing:20
     },
     input:{
         color:'black',

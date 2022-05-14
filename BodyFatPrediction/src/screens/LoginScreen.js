@@ -15,7 +15,7 @@ const LoginScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.wrapper}>
-                <Text style={styles.titleTextStyle}>Login</Text>
+                <Text style={styles.titleTextStyle}>LOGIN</Text>
                 <TextInput 
                     placeholder='Enter Email' 
                     style={styles.input}
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         borderRadius:5,
         paddingHorizontal:14,
         paddingTop:'10%',
-        height:"80%",
+        height:"100%",
         backgroundColor:"#ecf0f1",
         justifyContent:'center',
         alignContent:'center',
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
         letterSpacing:15,
         marginBottom:20,
         fontWeight:'900',
-        fontFamily:"sans-serif-medium"
+        fontFamily:"sans-serif-medium",
+        letterSpacing:20
     },
     input:{
         color:'black',
