@@ -25,23 +25,28 @@ const PredictFatLevelScreen = ({navigation}) => {
     const [wrist,setWrist] = useState(null);
     return(
         <View style={styles.container}>
-            <View>
+            <View style={styles.titleContainer}>
              <Text style={styles.title}>Predict Your Fat Level</Text>
             </View>
             <ScrollView style={styles.wrapper}>
+                <View style={styles.detailsContainer}>
+                    <Text style={styles.detials}>Input Following Details</Text>
+                </View>
                 <View style={styles.row}>
                     <TextInput 
                         placeholder='Age' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={age}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setAge(text)}
                     />
                     <TextInput 
                         placeholder='Weight' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={weight}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setWeight(text)}
                     />
                 </View>
@@ -49,15 +54,17 @@ const PredictFatLevelScreen = ({navigation}) => {
                     <TextInput 
                         placeholder='Height' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={height}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setHeight(text)}
                     />
                     <TextInput 
                         placeholder='Neck Size' 
                         style={styles.input} 
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={neck}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setNeck(text)}
                     />
                 </View>
@@ -65,15 +72,17 @@ const PredictFatLevelScreen = ({navigation}) => {
                     <TextInput 
                         placeholder='Chest Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={chest}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setChest(text)}
                     />
                     <TextInput 
                         placeholder='Abdomen Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={abdomen}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setAbdomen(text)}
                     />
                 </View>
@@ -81,15 +90,17 @@ const PredictFatLevelScreen = ({navigation}) => {
                     <TextInput 
                         placeholder='Hip Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={hip}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setHip(text)}
                     />
                     <TextInput 
                         placeholder='Thigh Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={thigh}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setThigh(text)}
                     />
                 </View>
@@ -97,15 +108,17 @@ const PredictFatLevelScreen = ({navigation}) => {
                     <TextInput 
                         placeholder='Knee Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={knee}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setKnee(text)}
                     />
                     <TextInput 
                         placeholder='Ankle Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={ankle}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setAnkle(text)}
                     />
                 </View>
@@ -113,15 +126,17 @@ const PredictFatLevelScreen = ({navigation}) => {
                     <TextInput 
                         placeholder='Biceps Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={biceps}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setBiceps(text)}
                     />
                     <TextInput 
                         placeholder='Forearm Size' 
                         style={styles.input}
-                        placeholderTextColor='black' 
+                        placeholderTextColor='#9b59b6' 
                         value={forearm}
+                        keyboardType='numeric'
                         onChangeText={(text)=>setForearm(text)}
                     />
                 </View>
@@ -129,8 +144,9 @@ const PredictFatLevelScreen = ({navigation}) => {
                 <TextInput 
                     placeholder='Wrist Size' 
                     style={styles.oneInput}
-                    placeholderTextColor='black' 
+                    placeholderTextColor='#9b59b6' 
                     value={wrist}
+                    keyboardType='numeric'
                     onChangeText={(text)=>setWrist(text)}
                 />
 
@@ -156,20 +172,35 @@ const styles = StyleSheet.create({
         // borderWidth:1,
         borderColor:'#bbb',
         borderRadius:5,
-        paddingHorizontal:14,
-        paddingTop:'10%'
+        // paddingHorizontal:14,
+        paddingTop:10,
+    },
+    titleContainer:{
+        width:'100%',
+        height:100,
+        backgroundColor:'#9b59b6',
     },
     title:{
         color:'blue',
         fontSize:25,
-        marginTop:10
+        marginTop:30,
+        textAlign:'center',
+        color:'#ecf0f1',
+        fontWeight:'bold'
+    },
+
+    detials:{
+        textAlign:'center',
+        color:'#9b59b6',
+        borderBottomColor:'#ecf0f1',
+        marginBottom:10
     },
     input:{
         color:'black',
         marginBottom:20,
         borderWidth:1,
-        padding:10,
-        borderColor:'#bbb',
+        padding:5,
+        borderColor:'#9b59b6',
         width:'40%',
         marginHorizontal:'5%',
         borderRadius:10,
@@ -179,8 +210,8 @@ const styles = StyleSheet.create({
         color:'black',
         marginBottom:20,
         borderWidth:1,
-        padding:10,
-        borderColor:'#bbb',
+        padding:5,
+        borderColor:'#9b59b6',
         width:'90%',
         marginHorizontal:'5%',
         borderRadius:10,

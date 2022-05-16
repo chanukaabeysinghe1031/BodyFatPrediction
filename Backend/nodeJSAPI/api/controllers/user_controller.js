@@ -1,6 +1,4 @@
 const User  = require('../models/user')
-const {use} = require("express/lib/router");
-const user = require('../models/user');
 const bcrypt = require("bcryptjs");
 
 // ************************* To register a seller account **************************
@@ -41,7 +39,6 @@ exports.addUser =  async  (req,res) => {
                             })
                         })
                         .catch(error => {
-                            
                             res.json({
                                 Status: "Unsuccessful",
                                 Message: "Happened saving the user in " +
