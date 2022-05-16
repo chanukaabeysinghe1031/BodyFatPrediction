@@ -25,7 +25,7 @@ const PredictFatLevelScreen = ({navigation}) => {
     const [forearm,setForearm] = useState(null);
     const [wrist,setWrist] = useState(null);
     const [loginMessage,setLoginMessage] = useState(null);
-    
+
     const handlePrediction = (credentials) => {
         const url = "http://10.0.2.2:3003/api/bodyFatLevel/predictBodyFat";
         axios.post(url,{
@@ -50,7 +50,7 @@ const PredictFatLevelScreen = ({navigation}) => {
             res = JSON.parse(res)
             console.log(res)
             if(res.Status==="Successful"){
-                navigation.navigate('PredictFatLevel')
+                setLoginMessage("Fat Level : "+res.Prediction)
             }else{
                 console.log(res.Message)
                 setLoginMessage(res.Message)
@@ -188,6 +188,7 @@ const PredictFatLevelScreen = ({navigation}) => {
                     onChangeText={(text)=>setWrist(text)}
                 />
 
+                <Text style={styles.text}>{loginMessage} </Text>
                 <TouchableOpacity style={styles.button} onPress={handlePrediction}>
                     <Text style={styles.buttonText}>Predict Fat Level</Text>
                     </TouchableOpacity>

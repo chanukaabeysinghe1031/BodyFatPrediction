@@ -20,7 +20,7 @@ exports.predictBodyFatLevel = (req,res) => {
             res.json({
                 Status: "Successful",
                 Message: 'Record  has been saved successfully.',
-                prediction : fatLevelPrediction
+                Prediction : fatLevelPrediction
             })
         })
         .catch(error=>{
