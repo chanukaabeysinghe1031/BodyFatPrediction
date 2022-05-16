@@ -1,13 +1,13 @@
 const UserFatLevelRecords = require('../models/userFatLevelRecord')
 
 exports.predictBodyFatLevel = (req,res) => {
-    const [
+    const {
         userId,age, weight,height,neck,chest,abdomen,hip,knee,thigh,ankle,biceps,forearm,wrist
-    ] = req.body 
+     } = req.body 
 
     if(userId===""||age===""|| weight===""||height===""||neck===""
         ||chest===""||abdomen===""||hip===""||knee===""||thigh===""
-        ||ankle===""||biceps===""||forearm===""||wrist){
+        ||ankle===""||biceps===""||forearm===""||wrist===""){
             res.json({Status: "Unsuccessful", Message: "All the data must be entered."})
     }else{
         // Take the prediction for the body fat level from the flask api
@@ -24,11 +24,12 @@ exports.predictBodyFatLevel = (req,res) => {
             })
         })
         .catch(error=>{
+            console.log(error)
             res.json({
                 Status: "Unsuccessful",
                 Message: "Happened saving the record in " +
                     "DB.",
-                error: error.Message
+                error: error
             })
         })
     }

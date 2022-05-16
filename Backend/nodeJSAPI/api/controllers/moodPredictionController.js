@@ -2,9 +2,9 @@ const UserMoodRecords= require('../models/userMoodRecord')
 
 // ************************* To predict body fat **************************
 exports.predictMood= (req,res) => {
-    const [
+    const {
         userId
-    ] = req.body 
+     } = req.body 
 
     if(userId===""||req.file===null){
             res.json({Status: "Unsuccessful", Message: "All the data must be entered."})

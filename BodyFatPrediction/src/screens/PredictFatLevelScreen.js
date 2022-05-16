@@ -8,6 +8,7 @@ import {
     StyleSheet,
     ScrollView
 } from 'react-native';
+import axios from 'axios';
 
 const PredictFatLevelScreen = ({navigation}) => {
     const [age,setAge] = useState(null);
@@ -23,6 +24,43 @@ const PredictFatLevelScreen = ({navigation}) => {
     const [biceps,setBiceps] = useState(null);
     const [forearm,setForearm] = useState(null);
     const [wrist,setWrist] = useState(null);
+    const [loginMessage,setLoginMessage] = useState(null);
+    
+    const handlePrediction = (credentials) => {
+        const url = "http://10.0.2.2:3003/api/bodyFatLevel/predictBodyFat";
+        axios.post(url,{
+            userId:"dsfadsfs",
+            age:age,
+            weight:weight,
+            height:height,
+            neck:neck,
+            chest:chest,
+            abdomen:abdomen,
+            hip:hip,
+            thigh:thigh,
+            knee:knee,
+            ankle:ankle,
+            biceps:biceps,
+            forearm:forearm,
+            wrist:wrist
+        })
+        .then(response=>{
+            let res = JSON.stringify(response.data);
+            setLoginMessage(res.Status);
+            res = JSON.parse(res)
+            console.log(res)
+            if(res.Status==="Successful"){
+                navigation.navigate('PredictFatLevel')
+            }else{
+                console.log(res.Message)
+                setLoginMessage(res.Message)
+            }
+        })
+        .catch(error=>{
+            setLoginMessage(error)
+        })
+   }
+
     return(
         <View style={styles.container}>
             <View style={styles.titleContainer}>
@@ -150,7 +188,9 @@ const PredictFatLevelScreen = ({navigation}) => {
                     onChangeText={(text)=>setWrist(text)}
                 />
 
-                <View style={styles.button}><Button title="Predict Fat Level"/></View>
+                <TouchableOpacity style={styles.button} onPress={handlePrediction}>
+                    <Text style={styles.buttonText}>Predict Fat Level</Text>
+                    </TouchableOpacity>
                 <View style={{flexDirection:'row',marginTop:10,alignSelf:'center'}}>
                     <TouchableOpacity onPress={()=>navigation.navigate('Home')}>
                         <Text style={styles.link}>Home</Text>
@@ -179,6 +219,8 @@ const styles = StyleSheet.create({
         width:'100%',
         height:100,
         backgroundColor:'#9b59b6',
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20
     },
     title:{
         color:'blue',
@@ -218,14 +260,22 @@ const styles = StyleSheet.create({
         textAlign:'center'
     },
     button:{
-        marginTop:50,
-        width:'100%',
+        marginTop:10,
+        width:'50%',
+        height:40,
         marginBottom:10,
         alignItems:'center',
         justifyContent:'center',
+        backgroundColor:'#9b59b6',
+        alignSelf:'center',
+        borderRadius:20
+    },
+    buttonText:{
+        color:'#ecf0f1',
+        fontWeight:'bold'
     },
     link:{
-        color:'blue',
+        color:'#9b59b6',
         marginBottom:100
     },
     text:{
