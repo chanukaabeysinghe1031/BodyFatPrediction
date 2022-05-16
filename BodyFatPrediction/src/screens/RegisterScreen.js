@@ -7,12 +7,32 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
+import axios from 'axios';
 
 const RegisterScreen = ({navigation}) => {
     const [email,setEmail] = useState(null);
     const [fullName,setFullName] = useState(null);
     const [contactNo,setContactNo] = useState(null);
     const [password,setPassword] = useState(null);
+
+    const handleSignup = (credentials) => {
+        const url = "http://10.0.2.2:3003/api/users/addUser";
+        axios.post(url,{fullName:fullName,email:email,password:password})
+        .then(response=>{
+            let res = JSON.stringify(response.data);
+            setLoginMessage(res.Status);
+            res = JSON.parse(res)
+            if(res.Status==="Successful"){
+                navigation.navigate('PredictFatLevel')
+            }else{
+                console.log(res.Message)
+                setLoginMessage(res.Message)
+            }
+        })
+        .catch(error=>{
+            setLoginMessage(error)
+        })
+   }
     return(
         <View style={styles.container}>
             <View style={styles.wrapper}>
@@ -47,7 +67,7 @@ const RegisterScreen = ({navigation}) => {
                     onChangeText={(text)=>setPassword(text)}
                 />
                 
-                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.buttonContainer} onPress={handleSignup}>
                    <Text>Register</Text>
                 </TouchableOpacity>
                 <View style={{flexDirection:'row',marginTop:10,alignSelf:'center'}}>

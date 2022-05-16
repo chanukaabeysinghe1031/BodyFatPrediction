@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React , {useState} from 'react';
 import {
     TextInput,
@@ -8,10 +9,31 @@ import {
     StyleSheet
 } from 'react-native';
 
+
 const LoginScreen = ({navigation}) => {
 
     const [email,setEmail] = useState(null);
     const [password,setPassword] = useState(null);
+    const [loginMessage,setLoginMessage] = useState(null);
+
+    const handleLogin = () => {
+         const url = "http://10.0.2.2:3003/api/users/login";
+         axios.post(url,{email:email,password:password})
+         .then(response=>{
+            let res = JSON.stringify(response.data);
+            setLoginMessage(res.Status);
+            res = JSON.parse(res)
+            if(res.Status==="Successful"){
+                navigation.navigate('PredictFatLevel')
+            }else{
+                console.log(res.Message)
+                setLoginMessage(res.Message)
+            }
+         })
+         .catch(error=>{
+            setLoginMessage(error)
+         })
+    }
     return(
         <View style={styles.container}>
             <View style={styles.wrapper}>
@@ -31,8 +53,9 @@ const LoginScreen = ({navigation}) => {
                     value={password}
                     onChangeText={(text)=>setPassword(text)}
                 />
+                 <Text style={styles.text}>{loginMessage} </Text>
                 
-                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.buttonContainer} onPress={handleLogin}>
                    <Text>Login</Text>
                 </TouchableOpacity>
 
