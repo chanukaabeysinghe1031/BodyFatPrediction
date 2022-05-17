@@ -28,6 +28,7 @@ const PredictFatLevelScreen = ({navigation}) => {
 
     const handlePrediction = (credentials) => {
         const url = "http://10.0.2.2:3003/api/bodyFatLevel/predictBodyFat";
+        setLoginMessage("Loading Prediction")
         axios.post(url,{
             userId:"dsfadsfs",
             age:age,
@@ -45,6 +46,7 @@ const PredictFatLevelScreen = ({navigation}) => {
             wrist:wrist
         })
         .then(response=>{
+            
             let res = JSON.stringify(response.data);
             setLoginMessage(res.Status);
             res = JSON.parse(res)
@@ -220,8 +222,6 @@ const styles = StyleSheet.create({
         width:'100%',
         height:100,
         backgroundColor:'#9b59b6',
-        borderBottomLeftRadius:20,
-        borderBottomRightRadius:20
     },
     title:{
         color:'blue',

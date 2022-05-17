@@ -26,7 +26,7 @@ def predict():
     decoded =  base64.b64decode(encoded)
     # image=Image.open(io.BytesIO(decoded))
     # processedImage=preprocess(image)
-    prediction = model.predict({}).tolist()
+    prediction = model.predict([[33,33,33,33,33,33,33,33,33,33,33,33,33]]).tolist()
     response = {
         'prediction':prediction[0]
     }
