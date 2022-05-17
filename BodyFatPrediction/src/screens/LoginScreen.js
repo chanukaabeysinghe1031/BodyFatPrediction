@@ -24,7 +24,8 @@ const LoginScreen = ({navigation}) => {
             setLoginMessage(res.Status);
             res = JSON.parse(res)
             if(res.Status==="Successful"){
-                navigation.navigate('PredictFatLevel')
+                console.log("User Id "+res.User._id)
+                navigation.navigate('PredictFatLevel',{userId:res.User._id})
             }else{
                 console.log(res.Message)
                 setLoginMessage(res.Message)

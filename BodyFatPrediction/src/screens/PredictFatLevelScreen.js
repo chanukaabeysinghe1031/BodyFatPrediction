@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import axios from 'axios';
 
-const PredictFatLevelScreen = ({navigation}) => {
+const PredictFatLevelScreen = ({navigation,route}) => {
     const [age,setAge] = useState(null);
     const [weight,setWeight] = useState(null);
     const [height,setHeight] = useState(null);
@@ -29,8 +29,9 @@ const PredictFatLevelScreen = ({navigation}) => {
     const handlePrediction = (credentials) => {
         const url = "http://10.0.2.2:3003/api/bodyFatLevel/predictBodyFat";
         setLoginMessage("Loading Prediction")
+
         axios.post(url,{
-            userId:"dsfadsfs",
+            userId:route.params.userId,
             age:age,
             weight:weight,
             height:height,
