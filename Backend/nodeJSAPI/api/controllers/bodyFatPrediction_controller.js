@@ -17,7 +17,21 @@ exports.predictBodyFatLevel = (req,res) => {
             method: 'POST',
             uri: PYTHON_FLASK_API_URL+'predictBodyFat',
             body: {
-                "modelInput":[[23,154.25,67.75,36.2,93.1,85.2,94.5,59.0,37.3,21.9,32.0,27.4,17.1]]
+                "modelInput":[[
+                    parseFloat(age),
+                    parseFloat(weight),
+                    parseFloat(height),
+                    parseFloat(neck),
+                    parseFloat(chest),
+                    parseFloat(abdomen),
+                    parseFloat(hip),
+                    parseFloat(thigh),
+                    parseFloat(knee),
+                    parseFloat(ankle),
+                    parseFloat(biceps),
+                    parseFloat(forearm),
+                    parseFloat(wrist)
+                ]]
             },
             json: true,
             headers: {
