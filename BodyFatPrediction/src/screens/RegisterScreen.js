@@ -16,7 +16,7 @@ const RegisterScreen = ({navigation}) => {
     const [password,setPassword] = useState(null);
 
     const handleSignup = (credentials) => {
-        const url = "http://10.0.2.2:3003/api/users/addUser";
+        const url = "http://192.168.1.8:3003/api/users/addUser";
         axios.post(url,{fullName:fullName,email:email,password:password})
         .then(response=>{
             let res = JSON.stringify(response.data);

@@ -22,4 +22,4 @@ app.use('/uploads',express.static('uploads'));
 app.use('/api/users',userRouter )
 app.use('/api/bodyFatLevel',bodyFatLevelPredictionRouter )
 app.use('/api/moods',moodPredictionRouter )
-app.listen(3003);
+app.listen(3006);

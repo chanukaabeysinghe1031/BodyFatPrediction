@@ -27,7 +27,7 @@ const PredictFatLevelScreen = ({navigation,route}) => {
     const [loginMessage,setLoginMessage] = useState(null);
 
     const handlePrediction = (credentials) => {
-        const url = "http://10.0.2.2:3003/api/bodyFatLevel/predictBodyFat";
+        const url = "http://192.168.1.8:3006/api/bodyFatLevel/predictBodyFat";
         setLoginMessage("Loading Prediction")
 
         axios.post(url,{
